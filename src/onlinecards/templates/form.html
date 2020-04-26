@@ -1,0 +1,29 @@
+<!-- sign up form -->
+<form method="POST" action = "">
+    <button type='submit' name='submit' value='sign_up'>
+        {% csrf_token %}
+        {{form.username.label}}
+        {{form.username}}
+
+        {{form.email.label}}
+        {{form.email}}
+
+        {{form.password1.label}}
+        {{form.password1}}
+
+        {{form.password2.label}}
+        {{form.password2}}    
+
+        <input type = "submit" name = "Create User">
+    </button>
+</form>
+
+<!-- sign in form -->
+<form method="POST" action="">
+    <button type='submit' name='submit' value='sign_in'>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username..." class="form-control">
+        <input type="password" name="password" placeholder="Password..." class="form-control" >
+        <input class="btn login_btn" type="submit" value="Login">
+    </button>
+</form>
