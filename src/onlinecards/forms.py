@@ -24,3 +24,17 @@ class DashboardUserForm(forms.ModelForm):
             'email',
             'aboutme'
         ]
+
+
+# class DashboardUserForm(forms.UserCreationForm):
+#     class Meta:
+#         model = User
+#         fields = [
+#             'firstname',
+#             'lastname',
+#             'designation',
+#             'email',
+#             'aboutme'
+#         ]
+
+

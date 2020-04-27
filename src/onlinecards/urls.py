@@ -9,8 +9,8 @@ urlpatterns = [
     path('loginnext/', views.loginnext, name = "loginnext"),
     # path('forms/', views.forms, name = "forms"),
     path('logout/', views.logoutUser, name = "logout"),
-    path('dashboardu/', views.dashboard_user_view, name = "dashboard_user_view"),
-    path('profile/',  views.profile,  name="profile"),
+    path('dashboardu/', views.dashboard_user_view, name = "dashboardu"),
+    # path('profile/',  views.profile,  name="profile"),
    
 
     

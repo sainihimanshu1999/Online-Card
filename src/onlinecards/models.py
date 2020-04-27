@@ -8,6 +8,7 @@ class UserDash(models.Model):
     designation = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     aboutme = models.TextField(max_length=1000)
+    image = models.ImageField(upload_to='profile_image', blank= True)
 
     def __str__(self):
         return(self.firstname)

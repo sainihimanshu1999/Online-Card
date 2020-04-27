@@ -8,9 +8,11 @@ from .forms import CreateUserForm
 from .forms import DashboardUserForm
 from .models import UserDash
 
+# home view
 def home(request):
     return render(request, "index.html")
 
+# SignUp page
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -23,6 +25,7 @@ def register(request):
     context = {'form': form}
     return render(request, "register.html", context)
 
+# Login Page
 def loginnext(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -38,21 +41,28 @@ def loginnext(request):
     context = {}
     return render(request, 'login.html', context)
 
+# Logout Page
 def logoutUser(request):
     logout(request)
     return redirect('loginnext')
 
-
+#profile Registration
 def dashboard_user_view(request):
-    form = DashboardUserForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = DashboardUserForm()
+    if request.method == 'POST':
+        form = DashboardUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = DashboardUserForm()
+            return redirect('')
 
-    context = {
-        'form':form
-    }
-    return render(request, "dashboarduser.html", context)
+    else:
+        form = DashboardUserForm(request.GET)
+    return render(request, "dashboarduser.html", {'form': form})
+
+
+#profile page
+# def profile(request):
+    
 
 
 
