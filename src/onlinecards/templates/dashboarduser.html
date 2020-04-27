@@ -1,15 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .udashboard{width: 700px;
+            height: 700px;
+            background: rgba(21, 178, 199, 0.911);
+            color: white;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            padding: 70px 30px;
+
+        }
+        h1{
+            margin: 0;
+            padding: 0 0 0px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Dashboard</title>
 </head>
 <body>
-    <form action="{% url 'dashboardu' %}" method="POST" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save" name="save" />
-    </form>
+    <div class="udashboard">
+        <h1>Let's Get Started</h1>
+        <form action="{% url 'dashboardu' %}" method="POST" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_firstname">First Name</label>
+                <input type="text" class="form-control form-control-sm" name="firstname" maxlength="100" required="" id="id_firstname">
+            </div>
+            <div class="form-group">
+                <label for="id_lastname">Last Name</label>
+                <input type="text" class="form-control form-control-sm" name="lastname" maxlength="100" required="" id="id_lastname">
+            </div>
+            <div class="form-group">
+                <label for="id_designation">Designation</label>
+                <input type="text" class="form-control form-control-sm" name="designation" maxlength="100" required="" id="id_designation">
+            </div>
+            <div class="form-group">
+                <label for="id_email">E-mail</label>
+                <input type="email" class="form-control form-control-sm" name="email" maxlength="100" required="" id="id_email">
+            </div>
+            <div class="form-group">
+                <label for="id_aboutme">About me</label>
+                <textarea name="aboutme" class="form-control form-control-sm" cols="40" rows="10" maxlength="1000" required="" id="id_aboutme"></textarea>
+            </div>
+            <input type="submit" value="Save" name="save" />
+        </form>
+    </div>
 </body>
 </html>
