@@ -53,7 +53,7 @@ def dashboard_user_view(request):
         if form.is_valid():
             form.save()
             form = DashboardUserForm()
-            return redirect('')
+            
 
     else:
         form = DashboardUserForm(request.GET)

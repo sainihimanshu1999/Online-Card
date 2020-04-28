@@ -22,7 +22,8 @@ class DashboardUserForm(forms.ModelForm):
             'lastname',
             'designation',
             'email',
-            'aboutme'
+            'aboutme',
+            'image',
         ]
 
 
