@@ -72,6 +72,9 @@
             </li>  
           </ul>
         </div>
+        <style>.hello-msg{font-size : 18px; color :#fff; margin-right: 20px; }</style>
+            <span class="hello-msg">Hello, {{request.user}} </span>
+            <span><a class = "hello-msg" href = "{% url 'logout' %}">Logout</a></span>
     </nav>
     <div id= "profilepicture">
     <img class="profile-user-img rounded-circle img-fluid mx-auto d-block" src="http://profileme.originlabsoft.com/assets/front/images/avatar.png" alt="User profile picture">

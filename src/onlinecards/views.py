@@ -2,6 +2,7 @@ import requests
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
@@ -34,7 +35,7 @@ def loginnext(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('dashboardu')
         else:
             messages.info(request, 'Username or Password is incorrect')
     
@@ -44,9 +45,10 @@ def loginnext(request):
 # Logout Page
 def logoutUser(request):
     logout(request)
-    return redirect('loginnext')
+    return redirect('home')
 
 #profile Registration
+@login_required(login_url='loginnext')
 def dashboard_user_view(request):
     if request.method == 'POST':
         form = DashboardUserForm(request.POST)
@@ -60,8 +62,8 @@ def dashboard_user_view(request):
     return render(request, "dashboarduser.html", {'form': form})
 
 
-#profile page
-# def profile(request):
+def card(request, firstname):
+    firstname = UserDash
     
 
 
