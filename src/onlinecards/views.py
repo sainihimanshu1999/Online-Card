@@ -1,8 +1,10 @@
 import requests
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CreateUserForm
@@ -48,22 +50,21 @@ def logoutUser(request):
     return redirect('home')
 
 #profile Registration
-@login_required(login_url='loginnext')
-def dashboard_user_view(request):
-    if request.method == 'POST':
+class DashboarduserView(TemplateView):
+    template_name = 'dashboarduser.html'
+    def post(self,request):
         form = DashboardUserForm(request.POST)
         if form.is_valid():
             form.save()
-            form = DashboardUserForm()
-            
+            form = DashboardUserForm()       
+        return render(request, 'card.html', {'form': form})
 
-    else:
+    def get(self,request):
         form = DashboardUserForm(request.GET)
-    return render(request, "dashboarduser.html", {'form': form})
+        return render(request,self.template_name, {'form': form})
 
 
-def card(request, firstname):
-    firstname = UserDash
+# def profile()
     
 
 

@@ -9,11 +9,15 @@ class UserDash(models.Model):
     email = models.EmailField(max_length=100)
     aboutme = models.TextField(max_length=1000)
     image = models.ImageField(upload_to='profile_image', blank= True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now= True)
     font_size = models.IntegerField(null=True)
 
     def __str__(self):
         return self.firstname
 
-    
+
+
+# class Profile(models.Model):
+#     fname = models.ForeignKey(UserDash, on_delete=models.CASCADE )
+
 

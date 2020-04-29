@@ -23,4 +23,6 @@ class UserAdmin(admin.ModelAdmin):
         return HttpResponseRedirect("../")
 admin.site.site_header = 'EazzyCard'
 admin.site.register(UserDash, UserAdmin)
+# admin.site.register(Profile)
 admin.site.unregister(Group)
+
