@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib import messages
 from .forms import CreateUserForm
 from .forms import DashboardUserForm
@@ -56,12 +57,30 @@ class DashboarduserView(TemplateView):
         form = DashboardUserForm(request.POST)
         if form.is_valid():
             form.save()
-            form = DashboardUserForm()       
-        return render(request, 'card.html', {'form': form})
+            form = DashboardUserForm()
+            data = UserDash.objects.get(pk='user_id')
+            pro = {
+                'firstname':data
+            }
+        return render(request, 'card.html', pro)
 
     def get(self,request):
         form = DashboardUserForm(request.GET)
         return render(request,self.template_name, {'form': form})
+
+
+def SocialbuttonView(request):
+    form = SocialbuttonForm()
+    if request.method== 'POST':
+        form = SocialbuttonForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = SocialbuttonForm()
+        return HttpResponse('<h4>user response if recorded successfully!</h4>')
+    else:
+        form = SocialbuttonForm(request.GET)
+        return render(request, 'profile.html',{'form':form})
+
 
 
 # def profile()

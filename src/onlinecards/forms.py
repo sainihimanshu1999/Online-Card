@@ -12,7 +12,7 @@ PRO_CHOICES = (
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username','email', 'password1', 'password2']
 
 class DashboardUserForm(forms.ModelForm):
     class Meta:
@@ -23,18 +23,20 @@ class DashboardUserForm(forms.ModelForm):
             'designation',
             'email',
             'aboutme',
+            'github',
+            'facebook',
+            'linkedin',
+            'instagram',
         ]
 
 
-# class DashboardUserForm(forms.UserCreationForm):
-#     class Meta:
-#         model = User
-#         fields = [
-#             'firstname',
-#             'lastname',
-#             'designation',
-#             'email',
-#             'aboutme'
-#         ]
-
+class SocialbuttonForm(forms.ModelForm):
+    class meta:
+        model = UserDash
+        fields = [
+            'github',
+            'facebook',
+            'linkedin',
+            'instagram',
+        ]
 

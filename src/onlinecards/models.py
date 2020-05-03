@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import reverse
 
 class UserDash(models.Model):
+    user_id = models.IntegerField(primary_key = True)
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     designation = models.CharField(max_length=100)
@@ -11,6 +12,10 @@ class UserDash(models.Model):
     image = models.ImageField(upload_to='profile_image', blank= True)
     created = models.DateTimeField(auto_now= True)
     font_size = models.IntegerField(null=True)
+    github = models.CharField(max_length=100, blank= True, null= True)
+    facebook = models.CharField(max_length=100, blank= True, null= True )
+    linkedin = models.CharField(max_length=100, blank= True, null= True )
+    instagram = models.CharField(max_length=100, blank= True, null= True )
 
     def __str__(self):
         return self.firstname
